@@ -1,0 +1,17 @@
+<h1>銭湯詳細</h1>
+
+
+<h4>投稿者</h4>
+<P><%= @post.user.name %></P>
+
+<h4>銭湯名</h4>
+<%= @post.title %>
+
+<h4>写真♨</h4>
+<%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpg' %>
+
+<h4>銭湯紹介<h4>
+<%= @post.body %>
+
+<h4>住所</h4>
+<%= @post.address %>

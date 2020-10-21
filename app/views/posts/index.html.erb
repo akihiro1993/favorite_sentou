@@ -1,0 +1,20 @@
+<h1>銭湯一覧♨</h1>
+
+<% @posts.each do |post| %>
+
+<h4>投稿者</h4>
+<P><%= post.user.name %></P>
+
+<h4>銭湯名</h4>
+<%= post.title %>
+
+
+<h4>住所</h4>
+<%= post.address %>
+
+<h4>
+<%= link_to "詳しい銭湯", post_path(post.id) %>
+</h4>
+
+<% end %>
+
