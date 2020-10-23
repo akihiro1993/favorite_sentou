@@ -1,0 +1,22 @@
+<h1>銭湯に取りつかれた一般市民詳細</h1>
+
+<h4>ご尊顔</h4>
+<%= attachment_image_tag @user, :profile_image,:fill, 100,100, format: 'jpeg',fallback:"no_image.jpg" %>
+
+<h4>名前</h4>
+<%= @user.name %>
+
+<h4>あなたは誰なん？</h4>
+<%= @user.introduction %>
+
+<h4>この市民の投稿一覧</h4>
+<% @posts.each do |post| %>
+ <%= link_to post_path(post.id) do %>
+  <%= post.title %>
+ <% end %>
+<% end %>
+
+ <% if user_signed_in? && current_user.id == @user.id %>
+   <P><%= link_to "編集画面!",edit_user_path(@user.id) %>
+
+   <% end %>

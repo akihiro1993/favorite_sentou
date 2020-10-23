@@ -1,0 +1,14 @@
+<h1>銭湯に取りつかれた一般市民一覧</h1>
+
+ <div style= "margin-bottom:50px;">
+
+ <% @users.each do |user| %>
+   <h4>銭湯好きな人のご尊顔</h4>
+      <%= attachment_image_tag user, :profile_image, :fill, 50,50, format: 'jpeg',fallback: "no_image.jpg" %>
+
+   <h4>銭湯好きな人の名前</h4>
+　　<%= link_to user_path(user.id) do %>
+      <%= user.name %>
+   <% end %>
+ </div>
+<% end %>
