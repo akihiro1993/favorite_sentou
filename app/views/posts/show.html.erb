@@ -15,3 +15,6 @@
 
 <h4>住所</h4>
 <%= @post.address %>
+
+<h4><%= link_to "編集ページにパス！！！" ,edit_post_path(@post.id) %></h4>
+<h4><%= link_to "削除や！さ・く・じょ！" , post_path(@post.id), method: :delete,"data-confirm" => "本当に削除しますか？" %></h4>
