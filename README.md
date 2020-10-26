@@ -35,6 +35,10 @@ https://docs.google.com/spreadsheets/d/1HvEhfRPEiiJNZRIP6dxyVZSjg-kGm9ilSs8iHqtF
 - JSライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
 
+## 使用書類
+
+-アプリケーション詳細設計
+https://docs.google.com/spreadsheets/d/1RDlRMueSPuUxT2ZD-5OcWto7apvVN50LsfZpuCQY-Zw/edit#gid=637182161
 
 
 
