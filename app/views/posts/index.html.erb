@@ -15,4 +15,8 @@
 <h4>
 <%= link_to "詳しい銭湯", post_path(post.id) %>
 </h4>
+
+<h4>コメント件数</h4>
+ <%= link_to "#{post.post_comments.count}コメント",post_path(post.id) %>
+
 <% end %>

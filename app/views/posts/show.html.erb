@@ -16,5 +16,38 @@
 <h4>住所</h4>
 <%= @post.address %>
 
+<!--いいね機能-->
+
+<% if @post.favorited_by?(current_user) %>
+   <%= link_to post_favorites_path(@post),method: :delete do %>
+   <span class="glyphicon glyphicon-heart"><%= @post.favorites.count%></span>
+  <% end %>
+<% else %>
+  <%= link_to post_favorites_path(@post),method: :post do %>
+  <span class="glyphicon glyphicon-heart-empty"><%= @post.favorites.count %></span>
+  <% end %>
+ <% end %>
+
+<div>
+<% @post.post_comments.each do |post_comment| %>
+ <a><%= post_comment.user.name %></a>
+ <a><%= post_comment.created_at.strftime('%Y/%m/%d') %></a>
+ <a><%= post_comment.comment %></a>
+ <a><% if post_comment.user == current_user %>
+ 		<%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+ 	<% end %>
+ </a>
+ <% end %>
+</div>
+
+<div>
+<%= form_for [@post,@post_comment] do |f| %>
+<%= f.text_area :comment, rows:"5" %>
+<%= f.submit "送信する" %>
+<% end %>
+</div>
+
+<div>
 <h4><%= link_to "編集ページにパス！！！" ,edit_post_path(@post.id) %></h4>
 <h4><%= link_to "削除や！さ・く・じょ！" , post_path(@post.id), method: :delete,"data-confirm" => "本当に削除しますか？" %></h4>
+</div>
