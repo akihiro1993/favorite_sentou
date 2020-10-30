@@ -18,28 +18,24 @@
 
 <!--いいね機能-->
 <div class="post_<%= @post.id %>">
-<%= render "posts/favorite", post: @post %>
+  <%= render "posts/favorite", post: @post %>
 </div>
 <!--いいね終-->
 
-<div>
-<% @post.post_comments.each do |post_comment| %>
- <a><%= post_comment.user.name %></a>
- <a><%= post_comment.created_at.strftime('%Y/%m/%d') %></a>
- <a><%= post_comment.comment %></a>
- <a><% if post_comment.user == current_user %>
- 		<%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
- 	<% end %>
- </a>
- <% end %>
+<!--コメント機能-->
+
+<div class="post_<%= @post.id %>">
+  <%= render "posts/post_comment", post: @post %>
 </div>
 
 <div>
-<%= form_for [@post,@post_comment] do |f| %>
+<%= form_with(model: [@post,@post_comment],remote:true) do |f| %>
 <%= f.text_area :comment, rows:"5" %>
 <%= f.submit "送信する" %>
 <% end %>
 </div>
+
+<!--コメント機能終-->
 
 <div>
 <h4><%= link_to "編集ページにパス！！！" ,edit_post_path(@post.id) %></h4>
