@@ -17,16 +17,10 @@
 <%= @post.address %>
 
 <!--いいね機能-->
-
-<% if @post.favorited_by?(current_user) %>
-   <%= link_to post_favorites_path(@post),method: :delete do %>
-   <span class="glyphicon glyphicon-heart"><%= @post.favorites.count%></span>
-  <% end %>
-<% else %>
-  <%= link_to post_favorites_path(@post),method: :post do %>
-  <span class="glyphicon glyphicon-heart-empty"><%= @post.favorites.count %></span>
-  <% end %>
- <% end %>
+<div class="post_<%= @post.id %>">
+<%= render "posts/favorite", post: @post %>
+</div>
+<!--いいね終-->
 
 <div>
 <% @post.post_comments.each do |post_comment| %>
