@@ -1,0 +1,10 @@
+<!--コメント機能フォーム非同期専用-->
+<% post.post_comments.each do |post_comment| %>
+ <a><%= post_comment.user.name %></a>
+ <a><%= post_comment.created_at.strftime('%Y/%m/%d') %></a>
+ <a><%= post_comment.comment %></a>
+ <a><% if post_comment.user == current_user %>
+ 		<%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete,remote: true  %>
+ 	<% end %>
+ </a>
+ <% end %>
