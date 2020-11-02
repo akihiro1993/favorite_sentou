@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FavoriteSentou</title>
+    <title>Favorite銭湯</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,54 @@
   </head>
 
   <body>
+　　　<header class="navbar navbar-inverse">
+    <div class="container">
+
+      <nav class="nav navbar-nav navbar-left">
+        <span><%= image_tag("dog.png", width:'100',height:'100') %></span>
+      </nav>
+      <nav class="nav navbar-nav navbar-left">
+        <span>♨Favorite銭湯♨</span>
+      </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+          <li>
+            <%= link_to "マイページ", user_path(current_user.id), class: "glyphicon glyphicon-home" %>
+          </li>
+          <li>
+            <%= link_to "ユーザー一覧", users_path, class: "glyphicon glyphicon-user" %>
+          </li>
+
+          <li>
+            <%= link_to "新規投稿", new_post_path, class: "glyphicon glyphicon-user" %>
+          </li>
+          <li>
+            <%= link_to "投稿一覧", posts_path, class: "glyphicon glyphicon-book" %>
+          </li>
+          <li>
+            <%= link_to "ログアウト",destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
+          </li>
+          <% else %>
+
+          <li>
+            <%= link_to " Home",root_path, class: "glyphicon glyphicon-home" %>
+          </li>
+
+          <li>
+            <%= link_to "投稿一覧", posts_path,class: "glyphicon glyphicon-link" %>
+          </li>
+          <li>
+            <%= link_to "新規登録", new_user_registration_path, class: "glyphicon glyphicon-edit" %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in" %>
+          </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
     <%= yield %>
-  </body>
-</html>
+   </body>
+  </html>

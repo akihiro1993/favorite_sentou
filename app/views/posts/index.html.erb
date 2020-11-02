@@ -1,22 +1,31 @@
-<h1>銭湯一覧♨</h1>
+<div class="container">
+  <h1>銭湯一覧</h1>
+  <div class="row">
+  	<% @posts.each do |post| %>
+   <div class="col-lg-4">
+    <div class = "postbox">
+        <h3>投稿者</h3>
+     	  <p><%= link_to user_path(post.user) do %>
+     　　  <%= attachment_image_tag post.user, :profile_image, fallback: "no_img.jpg",size: "30x30", style: "margin: 0 auto;" %>
+           <%= post.user.name %>
+           <% end %>
+         </p>
 
-<% @posts.each do |post| %>
+        <h3>銭湯名♨</h3>
+        <p><%= post.title %></p>
 
-<h4>投稿者♨</h4>
-<P><%= post.user.name %></P>
+        <h3>住所♨</h3>
+        <p><%= post.address %></p>
 
-<h4>銭湯名♨</h4>
-<%= post.title %>
+    	 <%= attachment_image_tag post, :image,  size: "300x300" %>
 
+       <h4><%= link_to "詳しい銭湯", post_path(post.id) %>
+       </h4>
+       <p><%= link_to "#{post.post_comments.count}コメント",post_path(post.id) %>
+       </p>
+   </div>
+  </div>
+  <% end %>
+ </div>
+</div>
 
-<h4>住所♨</h4>
-<%= post.address %>
-
-<h4>
-<%= link_to "詳しい銭湯", post_path(post.id) %>
-</h4>
-
-<h4>コメント件数</h4>
- <%= link_to "#{post.post_comments.count}コメント",post_path(post.id) %>
-
-<% end %>
