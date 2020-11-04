@@ -1,14 +1,42 @@
-<h1>銭湯に取りつかれた一般市民一覧</h1>
+  <div class="container">
+    <h1>銭湯に取りつかれた一般市民一覧</h1>
+    <div class="row">
 
- <div style= "margin-bottom:50px;">
+     <div class="col-xs-4">
+     <div>
+     <% @all_ranks.each.with_index(1) do|all_rank,i| %>
+        <div >
+         <%= "投稿数第#{i}位は#{all_rank.name}さん!!!" %>
+        </div>
+     　<% end %>
+     </div>
+     </div>
 
- <% @users.each do |user| %>
-   <h4>銭湯好きな人のご尊顔</h4>
-      <%= attachment_image_tag user, :profile_image, :fill, 50,50, format: 'jpeg',fallback: "no_image.jpg" %>
+     <div class="col-xs-8">
 
-   <h4>銭湯好きな人の名前</h4>
-　　<%= link_to user_path(user.id) do %>
-      <%= user.name %>
-   <% end %>
- </div>
-<% end %>
+     <table class="table">
+	     <thead>
+		   <tr>
+			<th>写真</th>
+			<th>名前</th>
+			<th colspan="3"></th>
+		  </tr>
+	    </thead>
+
+	   <tbody>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= attachment_image_tag user, :profile_image, :fill, 50,50, format: 'jpeg',fallback: "no_image.jpg" %></td>
+			<td><%= link_to user_path(user.id) do %>
+				<%= user.name %></td>
+				<% end %>
+            <td><%= link_to user_path(user.id) do %>
+            	<%= "投稿件数: #{user.posts.count}" %></td>
+            	<% end %>
+        </tr>
+        <% end %>
+       </tbody>
+     </table>
+    </div>
+   </div>
+  </div>

@@ -1,45 +1,56 @@
-<h1>銭湯詳細</h1>
+<div class= "container">
+  <h1><%= @post.user.name %>さんの銭湯投稿</h1>
+  <div class="row">
+    <div class="col-lg-6">
+      <h4>投稿者</h4>
+        <P><%= @post.user.name %></P>
+      <h4>銭湯名</h4>
+        <p><%= @post.title %></p>
+      <h4>写真♨</h4>
+        <%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpg' %>
+      <h4>住所</h4>
+        <p><%= @post.address %></p>
+
+      <div>
+        <% if user_signed_in? && current_user.id == @post.user_id %>
+        <h4><%= link_to "編集ページにパス！！！" ,edit_post_path(@post.id) %></h4>
+        <h4><%= link_to "削除や！さ・く・じょ！" , post_path(@post.id), method: :delete,"data-confirm" => "本当に削除しますか？" %></h4>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <h4>銭湯紹介</h4>
+        <p><%= @post.body %></p>
+
+        <!--いいね機能-->
+       <div class="post_<%= @post.id %>">
+        <%= render "posts/favorite", post: @post %>
+       </div>
+       <!--いいね終-->
+
+       <!--コメント機能-->
+       <div>
+         <%= form_with model: [@post,@post_comment], data:{remote: true} do |f| %>
+         <%= f.text_area :comment, rows:"5" %>
+         <%= f.submit "送信する" %>
+         <% end %>
+        </div>
+
+        <div class="comment_<%= @post.id %>">
+          <%= render "posts/post_comment", post: @post %>
+        </div>
+         <!--コメント機能終-->
+    </div>
+  </div>
+ </div>
 
 
-<h4>投稿者</h4>
-<P><%= @post.user.name %></P>
 
-<h4>銭湯名</h4>
-<%= @post.title %>
 
-<h4>写真♨</h4>
-<%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpg' %>
 
-<h4>銭湯紹介<h4>
-<%= @post.body %>
 
-<h4>住所</h4>
-<%= @post.address %>
 
-<!--いいね機能-->
-<div class="post_<%= @post.id %>">
-  <%= render "posts/favorite", post: @post %>
-</div>
-<!--いいね終-->
 
-<!--コメント機能-->
 
-<div class="comment_<%= @post.id %>">
-  <%= render "posts/post_comment", post: @post %>
-</div>
 
-<div>
-<%= form_with model: [@post,@post_comment], data:{remote: true} do |f| %>
-<%= f.text_area :comment, rows:"5" %>
-<%= f.submit "送信する" %>
-<% end %>
-</div>
-
-<!--コメント機能終-->
-
-<div>
- <% if user_signed_in? && current_user.id == @post.user_id %>
-  <h4><%= link_to "編集ページにパス！！！" ,edit_post_path(@post.id) %></h4>
-  <h4><%= link_to "削除や！さ・く・じょ！" , post_path(@post.id), method: :delete,"data-confirm" => "本当に削除しますか？" %></h4>
- <% end %>
-</div>
