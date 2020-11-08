@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>銭湯一覧</h1>
+  <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' %>
+  <div class="row">
+  	<% @posts.each do |post| %>
+   <div class="col-lg-4">
+    <div class = "postbox">
+        <h3>投稿者</h3>
+     	  <p><%= link_to user_path(post.user) do %>
+     　　  <%= attachment_image_tag post.user, :profile_image, fallback: "no_img.jpg",size: "30x30", style: "margin: 0 auto;" %>
+           <%= post.user.name %>
+           <% end %>
+         </p>
+
+        <h3>銭湯名♨</h3>
+        <p><%= post.title %></p>
+
+        <h3>住所♨</h3>
+        <p><%= post.address %></p>
+
+    	 <%= attachment_image_tag post, :image,  size: "300x300" %>
+
+       <h4><%= link_to "詳しい銭湯", post_path(post.id) %>
+       </h4>
+       <p><%= link_to "#{post.post_comments.count}コメント",post_path(post.id) %>
+       </p>
+   </div>
+
+
+  </div>
+  <% end %>
+ </div>
+</div>
+
