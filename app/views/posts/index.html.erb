@@ -1,18 +1,33 @@
-<h1>銭湯一覧♨</h1>
+<div class="container-fluid">
+  <h1>銭湯一覧</h1>
+  <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' %>
+  <div class="row">
+  	<% @posts.each do |post| %>
+   <div class="col-lg-4">
+    <div class = "postbox">
+        <h3>投稿者</h3>
+     	  <%= link_to user_path(post.user) do %>
+     　　<p><%= attachment_image_tag post.user, :profile_image, fallback: "no_img.jpg",size: "30x30", style: "margin: 0 auto;" %></p>
+          <p><%= post.user.name %></p>
+           <% end %>
 
-<% @posts.each do |post| %>
+        <h3>銭湯名♨</h3>
+        <p><%= post.title %></p>
 
-<h4>投稿者♨</h4>
-<P><%= post.user.name %></P>
+        <h3>住所♨</h3>
+        <p><%= post.address %></p>
 
-<h4>銭湯名♨</h4>
-<%= post.title %>
+    	 <%= attachment_image_tag post, :image,  size: "300x300" %>
 
+       <h4><%= link_to "詳しい銭湯", post_path(post.id) %>
+       </h4>
+       <%= link_to post_path(post.id) do %>
+       <span><%=post.post_comments.count%>コメント</span>
+       <span><%=post.favorites.count %>イイネ</span>
+       <% end %>
+   </div>
+ </div>
+  <% end %>
+ </div>
+</div>
 
-<h4>住所♨</h4>
-<%= post.address %>
-
-<h4>
-<%= link_to "詳しい銭湯", post_path(post.id) %>
-</h4>
-<% end %>

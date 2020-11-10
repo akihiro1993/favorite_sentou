@@ -1,3 +1,5 @@
-<h1>あなたのfavoriteな銭湯を教えてよん</h1>
+<h1>ようこそFavorite 銭湯へ</h1>
   <div><img src="assets/sentou_top.jpg"></div>
-<%= link_to "ログアウト",destroy_user_session_path,method: :delete %>
+ <%= link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do %>
+  <h3>✨ツイッターでサイトをシェア✨</h3>
+ <% end %>

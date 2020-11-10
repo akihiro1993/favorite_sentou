@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def index
   @users = User.all
+  @all_ranks = User.find(Post.group(:user_id).order('count(user_id) desc').limit(5).pluck(:user_id))
   end
 
   def show
