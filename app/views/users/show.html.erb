@@ -1,22 +1,29 @@
-<h1>銭湯に取りつかれた一般市民詳細</h1>
+ <div class="container">
+  <div class="row">
+   <div class="col-lg-4">
+   	<h1>銭湯好きユーザー詳細</h1>
+   </div>
+   	<div class="col-lg-4">
+    <h4>プロフィール画像</h4>
+　     <%= attachment_image_tag @user, :profile_image,:fill, 100,100, format: 'jpeg',fallback:"no_image.jpg" %>
 
-<h4>ご尊顔</h4>
-<%= attachment_image_tag @user, :profile_image,:fill, 100,100, format: 'jpeg',fallback:"no_image.jpg" %>
+     <h4>名前</h4>
+     <p><%= @user.name %></p>
 
-<h4>名前</h4>
-<%= @user.name %>
+　　　<h4>自己紹介</h4>
+　　　<p><%= @user.introduction %></p>
 
-<h4>あなたは誰なん？</h4>
-<%= @user.introduction %>
-
-<h4>この市民の投稿一覧</h4>
-<% @posts.each do |post| %>
- <%= link_to post_path(post.id) do %>
-  <%= post.title %>
- <% end %>
-<% end %>
-
- <% if user_signed_in? && current_user.id == @user.id %>
-   <P><%= link_to "編集画面!",edit_user_path(@user.id) %>
-
-   <% end %>
+ 　　<% if user_signed_in? && current_user.id == @user.id %>
+   　　<P><%= link_to "編集画面!",edit_user_path(@user.id),class:"btn btn-primary col-xs-3" %></P>
+　　　<% end %>
+     </div>
+     <div class="col-lg-4">
+     <h4>投稿一覧</h4>
+	   <% @posts.each do |post| %>
+ 　　   <%= link_to post_path(post.id) do %>
+  　　<p><%= post.title %></p>
+ 　　　<% end %>
+　　　<% end %>
+     </div>
+  </div>
+</div>
