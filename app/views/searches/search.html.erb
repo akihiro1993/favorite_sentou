@@ -43,7 +43,7 @@
      <tr>
       <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
       <td><%= user.name%></td>
-      <td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
+      <td><%= link_to "ユーザー詳細", user, class: "user_#{user.id}" %></td>
      </tr>
     <% end %>
    </tbody>
