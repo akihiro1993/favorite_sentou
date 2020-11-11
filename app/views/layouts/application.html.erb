@@ -13,10 +13,10 @@
 　　　<header class="navbar navbar-inverse">
     <div class="container">
       <nav class="nav navbar-nav navbar-left">
-       <%= image_tag("/dog.png", width:'100',height:'100') %>
+       <%= image_tag asset_path("dog2.png", width:'100',height:'100') %>
       </nav>
       <nav class="nav navbar-nav navbar-left">
-        <h2>♨Favorite銭湯♨</h2>
+        <h2><%= link_to "♨Favorite銭湯♨" , root_path %></h2>
       </nav>
       <nav>
         <ul class="nav navbar-nav navbar-right">
