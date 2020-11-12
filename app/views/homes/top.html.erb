@@ -1,6 +1,28 @@
-<h1>ようこそFavorite 銭湯へ</h1>
-  <div><%= image_tag asset_path("sentou_top.jpg") %>
-  </div>
- <%= link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do %>
-  <h3>✨ツイッターでサイトをシェア✨</h3>
- <% end %>
+<div class="container">
+  <div class="row">
+  	<div class="col-lg-8">
+     <h1>ようこそFavorite 銭湯へ</h1>
+      <div><%= image_tag asset_path("sentou_top.jpg") %>
+      </div>
+       <%= link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do %>
+        <h3>✨ツイッターでサイトをシェア✨</h3>
+       <% end %>
+    </div>
+
+   <div class="col-lg-4">
+   	<span class="badge badge-info">Info
+   	</span>
+   	 <div class ="border border-info">
+     <h2 class="text-monospace">このサイトは銭湯好きの皆様が各銭湯の情報と元に、<br>あなたなりの楽しみ方やおすすめポイント等をご自由に投稿下さい。
+     </h2>
+     </div>
+
+      <div class="btn-wrapper">
+        <p><%= link_to "ログイン", new_user_session_path, class: "btn btn-info col-xs-5 col-xs-offset-1" %>
+        </p>
+        <p><%= link_to "新規登録", new_user_registration_path, class: "btn btn-success col-xs-5 col-xs-offset-1" %>
+        </p>
+       </div>
+   </div>
+ </div>
+</div>
