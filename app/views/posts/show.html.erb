@@ -14,7 +14,7 @@
       <div>
         <% if user_signed_in? && current_user.id == @post.user_id %>
         <h4><%= link_to "編集ページにパス！！！" ,edit_post_path(@post.id) %></h4>
-        <h4><%= link_to "削除や！さ・く・じょ！" , post_path(@post.id), method: :delete,"data-confirm" => "本当に削除しますか？" %></h4>
+        <h4><%= link_to "削除！" , post_path(@post.id), method: :delete,"data-confirm" => "本当に削除しますか？" %></h4>
         <% end %>
       </div>
     </div>
