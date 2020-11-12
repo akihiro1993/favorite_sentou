@@ -7,7 +7,7 @@
     <div class = "postbox">
         <h3>投稿者</h3>
      	  <%= link_to user_path(post.user) do %>
-     　　<p><%= attachment_image_tag post.user, :profile_image, fallback: "no_img.jpg",size: "30x30", style: "margin: 0 auto;" %></p>
+     <p><%= attachment_image_tag post.user, :profile_image, fallback: "no_img.jpg",size: "30x30", style: "margin: 0 auto;" %></p>
           <p><%= post.user.name %></p>
            <% end %>
 
