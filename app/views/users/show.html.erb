@@ -1,14 +1,30 @@
  <div class="container">
   <div class="row">
+
    <div class="col-lg-4">
-   	<h1>銭湯好きユーザー詳細</h1>
-   </div>
-   	<div class="col-lg-4">
+   	<h2>ユーザー詳細</h2>
+     <h4><%= "フォロー数: #{@user.follower.count}" %></h4>
+      <h4><%= "フォロワー数: #{@user.followed.count}" %></h4>
+      <% unless @user == current_user %>
+      <% if current_user.following?(@user) %>
+       <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST,class: 'btn btn-danger btn-block' %>
+        <% else %>
+         <%= link_to 'フォローする', follow_path(@user.id), method: :POST,class: 'btn btn-primary btn-block' %>
+         <% end %>
+         <% end %>
+      <h3>
+      <%= link_to 'フォロー一覧', followerindex_path(@user.id) %></h3>
+      <h3>
+      <%= link_to 'フォロワー一覧', followedindex_path(@user.id) %></h3>
+
+       </div>
+
+    <div class="col-lg-4">
     <h4>プロフィール画像</h4>
 　     <%= attachment_image_tag @user, :profile_image,:fill, 100,100, format: 'jpeg',fallback:"no_image.jpg" %>
 
      <h4>名前</h4>
-     <p><%= @user.name %></p>
+     <h3><%= @user.name %></h3>
 
 　　　<h4>自己紹介</h4>
 　　　<p><%= @user.introduction %></p>

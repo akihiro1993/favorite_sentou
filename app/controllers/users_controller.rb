@@ -23,6 +23,14 @@ class UsersController < ApplicationController
   def destroy
   end
 
+  def followerindex
+     @user = User.find(params[:id])
+  end
+
+  def followedindex
+    @user = User.find(params[:id])
+  end
+
   private
 
   def user_params
