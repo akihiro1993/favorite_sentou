@@ -13,4 +13,11 @@ Rails.application.routes.draw do
 
   resources :users
   get 'search' => 'searches#search'
+
+  post 'follow/:id' => 'relationships#follow', as:'follow'
+  post 'unfollow/:id' => 'relationships#unfollow', as:'unfollow'
+
+  get 'followerindex/:id' => 'users#followerindex', as:"followerindex"
+  get 'followedindex/:id' => 'users#followedindex', as:"followedindex"
+
 end
