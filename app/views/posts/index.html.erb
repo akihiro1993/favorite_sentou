@@ -7,15 +7,15 @@
     <div class = "postbox">
         <h3>投稿者</h3>
      	  <%= link_to user_path(post.user) do %>
-     <p><%= attachment_image_tag post.user, :profile_image, fallback: "no_img.jpg",size: "30x30", style: "margin: 0 auto;" %></p>
-          <p><%= post.user.name %></p>
+     <p><%= attachment_image_tag post.user, :profile_image,size: "30x30", style: "margin: 0 auto;" %></p>
+          <h4><%= post.user.name %></h4>
            <% end %>
 
         <h3>銭湯名♨</h3>
-        <p><%= post.title %></p>
+        <h4><%= post.title %></h4>
 
         <h3>住所♨</h3>
-        <p><%= post.address %></p>
+        <h4><%= post.address %></h4>
 
     	 <%= attachment_image_tag post, :image,  size: "300x300" %>
 
