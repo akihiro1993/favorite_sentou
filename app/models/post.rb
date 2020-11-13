@@ -1,5 +1,8 @@
 class Post < ApplicationRecord
 
+is_impressionable
+
+
  belongs_to :user
  attachment :image
  has_many :post_comments, dependent: :destroy
