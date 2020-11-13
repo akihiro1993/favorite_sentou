@@ -80,3 +80,5 @@ end
 
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
+
+gem 'impressionist', '~>1.6.1'

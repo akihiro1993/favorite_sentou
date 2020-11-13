@@ -22,8 +22,9 @@
        <h4><%= link_to "詳しい銭湯", post_path(post.id) %>
        </h4>
        <%= link_to post_path(post.id) do %>
-       <span><%=post.post_comments.count%>コメント</span>
-       <span><%=post.favorites.count %>イイネ</span>
+       <span><%=post.post_comments.count%>コメント💭</span>
+       <span><%=post.favorites.count %>イイネ♥</span>
+       <span><%= post.impressionist_count %>件の足跡👣</span>
        <% end %>
    </div>
  </div>
